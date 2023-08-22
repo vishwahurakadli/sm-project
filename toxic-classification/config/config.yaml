@@ -1,0 +1,23 @@
+artifacts_root: artifacts
+
+
+model_trainer:
+  root_dir: artifacts/
+  data_path: artifacts/data.csv
+  embed_file: artifacts/glove.6B.50d.txt
+  model_path: artifacts/model.h5
+  tokenizer_path: artifacts/tokenizer.pickle
+  embed_mat: artifacts/embedding_matrix.pickle
+  validation_path: artifacts/validation.csv
+
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  data_path: artifacts/data_transformation/samsum_dataset
+  model_path: artifacts/model.h5
+  tokenizer_path: artifacts/tokenizer.pickle
+  embed_mat: artifacts/embedding_matrix.pickle
+  validation_path: artifacts/validation.csv
+  validation_output: artifacts/validation_output.json
+  confusion_matrix_path: artifacts/confusion_matrix
+
