@@ -3,6 +3,7 @@ from toxicClassifier.components.model_trainer import ModelTrainer
 from toxicClassifier.logging import logger
 import pandas as pd
 import pickle
+import os
 from sklearn.model_selection import train_test_split
 
 class ModelTrainerTrainingPipeline:
@@ -19,6 +20,7 @@ class ModelTrainerTrainingPipeline:
         x_train, x_test, y_train, y_test = train_test_split(data['comment_text'], data[y_label], test_size=0.2, random_state=42)
         model_trainer.train(x_train, y_train, batch_size=32, epochs=2)
 
+        os.makedirs(model_trainer_config.models_dir, exist_ok=True)
         logger.info(f"Model training completed successfully !!")
         with open(model_trainer_config.tokenizer_path, 'wb') as handle:
             pickle.dump(model_trainer.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)

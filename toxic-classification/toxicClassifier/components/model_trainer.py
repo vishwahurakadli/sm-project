@@ -31,7 +31,7 @@ class ModelTrainer:
         word_index = self.tokenizer.word_index
         nb_words = min(self.max_features, len(word_index))
         embedding_matrix = np.random.normal(emb_mean, emb_std, (nb_words, self.embed_size))
-        print("token words",len(word_index))
+        # print("token words",len(word_index))
         for word, i in word_index.items():
             if i>= self.max_features: continue
             embedding_vector = embeddings_index.get(word)

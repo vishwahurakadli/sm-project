@@ -23,11 +23,9 @@ def get_comments(video_id:str)->list:
 
         comments_lst += response['items']
         if 'nextPageToken' not in response:
-            print(i)
             break
         next_page_token = response.get('nextPageToken')
 
         i+=1
     comments=[item['snippet']['topLevelComment']['snippet']['textOriginal'] for item in comments_lst]
-    print(comments)
     return comments

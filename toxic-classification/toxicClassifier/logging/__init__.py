@@ -8,6 +8,9 @@ log_filepath = os.path.join(log_dir,"running_logs.log")
 os.makedirs(log_dir, exist_ok=True)
 
 
+# write logs only to file not to console
+
+
 
 logging.basicConfig(
     level= logging.INFO,
@@ -15,7 +18,6 @@ logging.basicConfig(
 
     handlers=[
         logging.FileHandler(log_filepath),
-        logging.StreamHandler(sys.stdout)
     ]
 )
 

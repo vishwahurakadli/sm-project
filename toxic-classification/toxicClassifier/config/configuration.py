@@ -2,7 +2,6 @@ from toxicClassifier.constants import *
 from toxicClassifier.utils.common import read_yaml, create_directories
 from toxicClassifier.entity import (DataIngestionConfig,
                                    DataValidationConfig,
-                                   DataTransformationConfig,
                                    ModelTrainerConfig,
                                    ModelEvaluationConfig)
 
@@ -27,9 +26,8 @@ class ConfigurationManager:
 
         data_ingestion_config = DataIngestionConfig(
             root_dir=config.root_dir,
-            source_URL=config.source_URL,
+            data_dir=config.data_dir,
             local_data_file=config.local_data_file,
-            unzip_dir=config.unzip_dir 
         )
 
         return data_ingestion_config
@@ -43,25 +41,11 @@ class ConfigurationManager:
 
         data_validation_config = DataValidationConfig(
             root_dir=config.root_dir,
-            STATUS_FILE=config.STATUS_FILE,
-            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
+            data_path=config.data_path,
+            glove_path=config.glove_path,
         )
 
         return data_validation_config
-    
-
-    def get_data_transformation_config(self) -> DataTransformationConfig:
-        config = self.config.data_transformation
-
-        create_directories([config.root_dir])
-
-        data_transformation_config = DataTransformationConfig(
-            root_dir=config.root_dir,
-            data_path=config.data_path,
-            tokenizer_name = config.tokenizer_name
-        )
-
-        return data_transformation_config
     
 
 
@@ -75,6 +59,7 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             data_path=config.data_path,
             embed_file=config.embed_file,
+            models_dir=config.models_dir,
             model_path=config.model_path,
             tokenizer_path=config.tokenizer_path,
             embed_mat=config.embed_mat,    

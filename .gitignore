@@ -1,3 +1,5 @@
 toxic-classification/artifacts/
 toxic-classification/logs/
 **__pycache__/
+toxic-classification/glove/
+glove/

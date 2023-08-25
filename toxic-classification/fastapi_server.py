@@ -37,8 +37,7 @@ async def predict_route(text):
     try:
         obj = PredictionPipeline()
         result = obj.predict(text)
-        print(result)
-        result = json.dumps(result)
+        result = json.dumps(result) 
         result = json.loads(result)
         return result
         # return {"result":result}
@@ -47,4 +46,5 @@ async def predict_route(text):
     
 
 if __name__=="__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080, log_level="info")
+    # disable the logs of uvicorn
+    uvicorn.run("fastapi_server:app", host="0.0.0.0", port=8080, log_level="debug", reload=True)
