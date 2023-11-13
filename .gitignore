@@ -3,3 +3,4 @@ toxic-classification/logs/
 **__pycache__/
 toxic-classification/glove/
 glove/
+basic_front/
