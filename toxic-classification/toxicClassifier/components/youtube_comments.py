@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 
-API_KEY = 'AIzaSyA_z6eZWcnG7XWlU_vqiahczQ8EGmCSDyM'
+API_KEY = 'AIzaSyCEjv-oJ2zNbrxEyCCkmRvw5LWHzfAJ2qw'
 
 youtube = build(serviceName='youtube', version='v3', developerKey=API_KEY)
 

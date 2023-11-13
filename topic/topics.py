@@ -28,7 +28,7 @@ def get_topics(video_id:str):
 
     # Print the topics and their top words
     pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(lda_model.print_topics(num_topics=num_topics, num_words=5))
+    # pp.pprint(lda_model.print_topics(num_topics=num_topics, num_words=5))
 
     # Assign topics to comments
     comment_topics = []

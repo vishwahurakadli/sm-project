@@ -1,5 +1,6 @@
 import json
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 from fastapi.templating import Jinja2Templates
@@ -13,6 +14,14 @@ from toxicClassifier.pipeline.prediction import PredictionPipeline
 text:str = "What is Text Summarization?"
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/", tags=["authentication"])
 async def index():
@@ -32,7 +41,7 @@ async def training():
 
 
 
-@app.post("/predict")
+@app.get("/predict")
 async def predict_route(text):
     try:
         obj = PredictionPipeline()
